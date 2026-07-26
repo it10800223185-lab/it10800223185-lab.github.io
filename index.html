@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subhodeep | Full Stack Developer & AI Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Subhodeep Sadhu | Information Technology Student</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,603 +13,648 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #1a1a2e;
+            --accent-color: #e94560;
+            --gold: #d4af37;
+            --text-dark: #16213e;
+            --text-light: #f5f5f5;
+            --bg-light: #fafafa;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
 
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+        /* Classic Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--text-light);
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--gold);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--gold);
         }
 
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(45deg, #00f2ff, #00ff9d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
+        nav ul {
             list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
         }
 
-        .nav-links a {
-            color: #fff;
+        nav a {
             text-decoration: none;
+            color: var(--text-dark);
             font-weight: 500;
+            font-size: 1.1rem;
             transition: 0.3s;
             position: relative;
         }
 
-        .nav-links a:hover {
-            color: #00f2ff;
+        nav a:hover {
+            color: var(--accent-color);
         }
 
-        .nav-links a::after {
+        nav a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(45deg, #00f2ff, #00ff9d);
+            background: var(--gold);
             transition: 0.3s;
         }
 
-        .nav-links a:hover::after {
+        nav a:hover::after {
             width: 100%;
         }
 
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 10%;
-            position: relative;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #00f2ff, #00ff9d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.3)); }
-            to { filter: drop-shadow(0 0 30px rgba(0, 255, 157, 0.5)); }
-        }
-
-        .hero-content h2 {
-            font-size: 1.5rem;
-            color: #888;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .typing-text::after {
-            content: '|';
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #00f2ff, #00ff9d);
-            color: #0a0a0a;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
-        }
-
-        .btn-secondary {
-            border: 2px solid #00f2ff;
-            color: #00f2ff;
-            background: transparent;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 242, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
+        /* Sections */
         section {
-            padding: 100px 10%;
-            position: relative;
+            padding: 80px 0;
         }
 
         .section-title {
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            margin-bottom: 50px;
             text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            padding-bottom: 15px;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(45deg, #00f2ff, #00ff9d);
-            border-radius: 2px;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
         }
 
+        /* About Section */
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            align-items: center;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--gold);
         }
 
-        .about-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 20px;
-            background: linear-gradient(45deg, #00f2ff, #00ff9d);
-            padding: 5px;
-            overflow: hidden;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        .about-text p {
-            color: #aaa;
+        .about-text {
+            font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 20px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            background: var(--bg-light);
+            padding: 15px 20px;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-color);
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Projects Gallery */
+        .project-showcase {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .project-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .project-header p {
+            color: #666;
             font-size: 1.1rem;
         }
 
-        .skills {
+        .tech-stack {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
-            margin-top: 20px;
-        }
-
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #00f2ff;
-            transition: 0.3s;
-        }
-
-        .skill-tag:hover {
-            background: rgba(0, 242, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(45deg, #00f2ff, #00ff9d);
-            transform: scaleX(0);
-            transition: 0.3s;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border-color: rgba(0, 242, 255, 0.3);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .project-content p {
-            color: #888;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         .tech-badge {
-            background: rgba(0, 242, 255, 0.1);
-            color: #00f2ff;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Image Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            cursor: pointer;
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px 10px 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .project-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .project-links a {
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
-        }
-
-        .project-links a:hover {
-            color: #00f2ff;
-        }
-
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .certificate-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
             text-align: center;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
+            margin-top: 30px;
         }
 
-        .certificate-card::after {
-            content: '🏆';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            opacity: 0.3;
-        }
-
-        .certificate-card:hover {
-            transform: translateY(-5px);
-            border-color: #00f2ff;
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
-        }
-
-        .cert-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #00f2ff;
-        }
-
-        .certificate-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .certificate-card .issuer {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .certificate-card .date {
-            color: #00ff9d;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-        }
-
-        .view-cert {
+        .btn {
             display: inline-block;
-            margin-top: 10px;
-            color: #00f2ff;
+            padding: 12px 30px;
+            background: var(--accent-color);
+            color: white;
             text-decoration: none;
-            border-bottom: 1px solid #00f2ff;
-            padding-bottom: 2px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: 0.3s;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Certificates Section */
+        .certificates-container {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 3px dashed var(--gold);
+            border-radius: 10px;
+            padding: 60px 20px;
+            margin: 30px 0;
+            background: var(--bg-light);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .cert-card {
+            background: var(--bg-light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: 0.3s;
         }
 
-        .view-cert:hover {
-            color: #00ff9d;
-            border-color: #00ff9d;
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
-        .contact-content {
+        .cert-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .cert-content {
+            padding: 20px;
+        }
+
+        .cert-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .cert-issuer {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--primary-color);
+            color: white;
             text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-section .section-title::after {
+            background: var(--gold);
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .contact-links a {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: #fff;
-            text-decoration: none;
+            color: white;
+            font-size: 1.3rem;
             transition: 0.3s;
+            border: 2px solid var(--gold);
         }
 
         .contact-links a:hover {
-            background: linear-gradient(45deg, #00f2ff, #00ff9d);
-            color: #0a0a0a;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+            background: var(--gold);
+            color: var(--primary-color);
+            transform: translateY(-3px);
         }
 
         footer {
-            text-align: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.5);
+            background: #0f0f1e;
             color: #666;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            padding: 20px;
+            border-top: 3px solid var(--gold);
         }
 
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .about-image {
-                margin: 0 auto;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: 0.8s;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            nav ul { gap: 20px; flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-animation"></div>
+    <header>
+        <div class="container">
+            <div class="profile-section">
+                <!-- ADD YOUR PHOTO HERE -->
+                <img src="profile.jpg" alt="Subhodeep Sadhu" class="profile-img" onerror="this.src='https://via.placeholder.com/180'">
+            </div>
+            <h1>Subhodeep Sadhu</h1>
+            <p class="subtitle">Information Technology Student</p>
+        </div>
+    </header>
 
     <nav>
-        <div class="logo">PORTFOLIO</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
+        <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#project">Project</a></li>
             <li><a href="#certificates">Certificates</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Hi, I'm Subhodeep</h1>
-            <h2 class="typing-text">Full Stack Developer & AI Engineer</h2>
-            <p style="color: #888; margin-top: 20px; font-size: 1.1rem;">
-                Building intelligent solutions for real-world problems
-            </p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Contact Me</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="fade-in">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-image">
-                <!-- ADD YOUR PHOTO HERE -->
-                <img src="https://via.placeholder.com/300" alt="Subhodeep">
-            </div>
-            <div class="about-text">
-                <p>
-                    I'm a passionate Full Stack Developer specializing in AI-powered web applications. 
-                    I love creating solutions that make a real difference in people's lives.
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    A dedicated Information Technology student with strong foundations in C/C++, Data Structures, DBMS, and Computer Networks. Seeking an opportunity to contribute meaningfully to a professional environment while continuously growing as an engineer.
                 </p>
-                <p>
-                    Currently focused on building FarmMate - an AI agricultural assistant helping 
-                    Indian farmers with disease detection, soil analysis, and market prices.
+                <p class="about-text">
+                    Currently focused on building <strong>FarmMate</strong> – an AI-powered agricultural assistant helping Indian farmers with disease detection, soil analysis, weather forecasting, and real-time market prices using cutting-edge technologies.
                 </p>
-                <div class="skills">
-                    <span class="skill-tag">React.js</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">TensorFlow</span>
-                    <span class="skill-tag">Machine Learning</span>
-                    <span class="skill-tag">Git/GitHub</span>
-                    <span class="skill-tag">REST APIs</span>
+                
+                <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--primary-color);">Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">C/C++ Programming</div>
+                    <div class="skill-item">Data Structures</div>
+                    <div class="skill-item">DBMS (Database Management)</div>
+                    <div class="skill-item">Computer Networks</div>
+                    <div class="skill-item">React.js</div>
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">MongoDB</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">AI/ML (TensorFlow)</div>
+                    <div class="skill-item">Git/GitHub</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="fade-in">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
+    <section id="project" style="background: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title">Featured Project</h2>
             
-            <div class="project-card">
-                <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/5Dashboard.png" alt="FarmMate" class="project-image">
-                <div class="project-content">
-                    <h3>🌾 FarmMate</h3>
-                    <p>AI-Powered Agricultural Assistant with disease detection, soil analysis, weather forecast, and voice assistant.</p>
-                    <div class="project-tech">
-                        <span class="tech-badge">React</span>
+            <div class="project-showcase">
+                <div class="project-header">
+                    <h3>🌾 FarmMate - AI Agricultural Assistant</h3>
+                    <p>Full-stack AI web application for Indian farmers</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">React.js</span>
                         <span class="tech-badge">Node.js</span>
                         <span class="tech-badge">MongoDB</span>
                         <span class="tech-badge">Python</span>
                         <span class="tech-badge">TensorFlow</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/it10800223185-lab/farmmate" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/5Dashboard.png" target="_blank">
-                            <i class="fas fa-eye"></i> Preview
-                        </a>
+                        <span class="tech-badge">CNN</span>
+                        <span class="tech-badge">Groq AI</span>
                     </div>
                 </div>
-            </div>
 
+                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">Application Screenshots</h3>
+                
+                <div class="gallery-grid">
+                    <!-- Row 1: Auth -->
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/1Login_page.png" alt="Login">
+                        <div class="gallery-caption">Login Page</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/2ForgetPass_page.png" alt="Forgot Password">
+                        <div class="gallery-caption">Forgot Password</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/3OTP_page.png" alt="OTP">
+                        <div class="gallery-caption">OTP Verification</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/4CreateAcc_Page.png" alt="Register">
+                        <div class="gallery-caption">Create Account</div>
+                    </div>
+
+                    <!-- Row 2: Dashboard & AI -->
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/5Dashboard.png" alt="Dashboard">
+                        <div class="gallery-caption">Main Dashboard</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/5.1Dashboard.png" alt="Dashboard Activity">
+                        <div class="gallery-caption">Dashboard Activity</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/6AIassistant.png" alt="AI Assistant">
+                        <div class="gallery-caption">AI Assistant</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/7DiseaseScan.png" alt="Disease Scan">
+                        <div class="gallery-caption">Disease Detection</div>
+                    </div>
+
+                    <!-- Row 3: Disease & Soil -->
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/7.1Dscan.png" alt="Scan Result">
+                        <div class="gallery-caption">Scan Results</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/8SoilAnaysis.png" alt="Soil Analysis">
+                        <div class="gallery-caption">Soil Analysis Input</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/8.1SoilAnalysis.png" alt="Soil Results">
+                        <div class="gallery-caption">Crop Recommendations</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/9Weather.png" alt="Weather">
+                        <div class="gallery-caption">Weather Forecast</div>
+                    </div>
+
+                    <!-- Row 4: Weather, Mandi, Language -->
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/9.1weather.png" alt="5-Day Weather">
+                        <div class="gallery-caption">5-Day Forecast</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/10MandiPrice.png" alt="Mandi Prices">
+                        <div class="gallery-caption">Mandi Prices</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/10.1MandiPrice.png" alt="All Prices">
+                        <div class="gallery-caption">All Crop Prices</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/11Language.png" alt="Languages">
+                        <div class="gallery-caption">Multi-Language</div>
+                    </div>
+
+                    <!-- Row 5: Voice, History, Profile -->
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/12VoiceAssistant.png" alt="Voice">
+                        <div class="gallery-caption">Voice Assistant</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/13ScanHistory.png" alt="History">
+                        <div class="gallery-caption">Scan History</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/14EXCELsheetHistory.png" alt="Excel Export">
+                        <div class="gallery-caption">Excel Export</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/15EditProfile.png" alt="Profile">
+                        <div class="gallery-caption">Profile Management</div>
+                    </div>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/it10800223185-lab/farmmate" class="btn" target="_blank">
+                        <i class="fab fa-github"></i> View Code on GitHub
+                    </a>
+                    <a href="https://github.com/it10800223185-lab/farmmate#readme" class="btn btn-outline" target="_blank">
+                        <i class="fas fa-book"></i> Read Documentation
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="certificates" class="fade-in">
-        <h2 class="section-title">Certificates & Achievements</h2>
-        <div class="certificates-grid">
+    <section id="certificates">
+        <div class="container">
+            <h2 class="section-title">Certificates & Achievements</h2>
             
-            <div class="certificate-card">
-                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Full Stack Web Development</h3>
-                <p class="issuer">Issued by: [Organization Name]</p>
-                <p class="date">2024</p>
-                <a href="#" class="view-cert">View Certificate →</a>
-            </div>
+            <div class="certificates-container">
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 20px;">
+                    Professional certifications and achievements in software development and information technology.
+                </p>
 
-            <div class="certificate-card">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <h3>Machine Learning Specialization</h3>
-                <p class="issuer">Issued by: Coursera/Stanford</p>
-                <p class="date">2024</p>
-                <a href="#" class="view-cert">View Certificate →</a>
-            </div>
+                <!-- Certificate Upload Area (Visual Only - You add files via Git) -->
+                <div class="upload-area">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Certificate Gallery</h3>
+                    <p>Click on any certificate below to view full size.<br>
+                    To add new certificates, follow the guide below.</p>
+                </div>
 
+                <!-- Certificate Grid - Add your certificates here -->
+                <div class="cert-grid" id="certContainer">
+                    
+                    <!-- EXAMPLE CERTIFICATE (Remove this when you add yours) -->
+                    <div class="cert-card">
+                        <img src="https://via.placeholder.com/400x200/1a1a2e/d4af37?text=Your+Certificate+Here" alt="Certificate" class="cert-img">
+                        <div class="cert-content">
+                            <div class="cert-title">Certificate Title</div>
+                            <div class="cert-issuer">Issuing Organization</div>
+                        </div>
+                    </div>
+
+                    <!-- Add more certificates below following the same pattern -->
+
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; background: #f0f0f0; border-radius: 8px; text-align: left;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 10px;">
+                        <i class="fas fa-info-circle"></i> How to Add Your Certificates:
+                    </h4>
+                    <ol style="padding-left: 20px; color: #555;">
+                        <li>Save your certificate image as <code>cert1.jpg</code>, <code>cert2.jpg</code>, etc.</li>
+                        <li>Copy the certificate files to this folder</li>
+                        <li>Replace the placeholder code above with your certificate details</li>
+                        <li>Push to GitHub (instructions below)</li>
+                    </ol>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="fade-in">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-content">
-            <p style="color: #888; font-size: 1.1rem;">
-                I'm open to freelance opportunities, collaborations, and full-time roles. 
-                Let's build something amazing together!
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">
+                Interested in discussing opportunities or collaborations? 
+                Feel free to reach out.
             </p>
+            
             <div class="contact-links">
                 <a href="mailto:it10800223185@gmail.com" title="Email">
                     <i class="fas fa-envelope"></i>
@@ -625,38 +670,10 @@
     </section>
 
     <footer>
-        <p>© 2026 Subhodeep. Crafted with ❤️ and lots of ☕</p>
+        <div class="container">
+            <p>&copy; 2026 Subhodeep Sadhu. All rights reserved. | Crafted with precision</p>
+        </div>
     </footer>
-
-    <script>
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-        const text = "Full Stack Developer & AI Engineer";
-        const typingElement = document.querySelector('.typing-text');
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                typingElement.innerHTML = text.substring(0, i+1) + '<span class="typing-cursor">|</span>';
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        
-        window.addEventListener('load', typeWriter);
-    </script>
 
 </body>
 </html>
