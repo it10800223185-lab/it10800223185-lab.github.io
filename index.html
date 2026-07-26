@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subhodeep Sadhu | IT Student & Developer</title>
+    <title>Subhodeep | IT Student & Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -66,16 +66,6 @@
             z-index: 10000;
             width: 0%;
             transition: width 0.1s;
-        }
-
-        /* Particle Background */
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
         }
 
         .gradient-bg {
@@ -523,59 +513,62 @@
             margin-top: 5px;
         }
 
-        /* Skills */
+        /* Skills - Stylish Pills (No Percentage) */
         .skills-container h3 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.6rem;
             margin-bottom: 30px;
         }
 
-        .skill-bar-item {
-            margin-bottom: 22px;
-        }
-
-        .skill-info {
+        .skill-pills-grid {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .skill-name {
+        .skill-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 14px 24px;
+            border-radius: 50px;
             font-weight: 500;
             font-size: 0.95rem;
-        }
-
-        .skill-percent {
-            color: #a855f7;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .skill-track {
-            height: 8px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
             overflow: hidden;
         }
 
-        .skill-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #a855f7, #ec4899);
-            border-radius: 10px;
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .skill-fill::after {
+        .skill-pill::before {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 20px;
-            background: rgba(255,255,255,0.4);
-            filter: blur(5px);
+            inset: 0;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            opacity: 0;
+            transition: 0.4s;
+            z-index: -1;
+        }
+
+        .skill-pill i {
+            color: #a855f7;
+            font-size: 1.1rem;
+            transition: 0.4s;
+        }
+
+        .skill-pill:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: transparent;
+            box-shadow: 0 15px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .skill-pill:hover::before {
+            opacity: 1;
+        }
+
+        .skill-pill:hover i {
+            color: white;
         }
 
         /* Projects Section */
@@ -755,117 +748,116 @@
             flex-wrap: wrap;
         }
 
-        /* Certificates Section */
+        /* Certificates Section - Simplified */
         .cert-showcase {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .upload-zone {
-            border: 2px dashed rgba(168, 85, 247, 0.4);
-            border-radius: 24px;
-            padding: 70px 40px;
+        .cert-intro {
             text-align: center;
-            background: rgba(168, 85, 247, 0.03);
+            color: rgba(255,255,255,0.5);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cert-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(168, 85, 247, 0.3);
+        }
+
+        .cert-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .cert-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(168,85,247,0.4), rgba(236,72,153,0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
             transition: 0.4s;
-            margin-bottom: 40px;
+            backdrop-filter: blur(0px);
         }
 
-        .upload-zone:hover {
-            border-color: #a855f7;
-            background: rgba(168, 85, 247, 0.08);
+        .cert-card:hover .cert-overlay {
+            opacity: 1;
+            backdrop-filter: blur(2px);
         }
 
-        .upload-zone-icon {
-            width: 80px;
-            height: 80px;
+        .cert-view-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transform: scale(0.7);
+            transition: 0.4s;
+        }
+
+        .cert-card:hover .cert-view-icon {
+            transform: scale(1);
+        }
+
+        .cert-empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 40px;
+            background: rgba(255,255,255,0.02);
+            border: 2px dashed rgba(168, 85, 247, 0.3);
+            border-radius: 24px;
+        }
+
+        .cert-empty-icon {
+            width: 90px;
+            height: 90px;
             background: linear-gradient(135deg, #a855f7, #ec4899);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
-            font-size: 2rem;
+            font-size: 2.2rem;
             animation: float 3s ease-in-out infinite;
         }
 
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+        .cert-empty-state h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
-        .cert-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: 0.4s;
-        }
-
-        .cert-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(168, 85, 247, 0.4);
-            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
-        }
-
-        .cert-img-wrap {
-            height: 180px;
-            overflow: hidden;
-        }
-
-        .cert-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.4s;
-        }
-
-        .cert-card:hover .cert-img-wrap img {
-            transform: scale(1.1);
-        }
-
-        .cert-body {
-            padding: 20px;
-        }
-
-        .cert-name {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .cert-org {
+        .cert-empty-state p {
             color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-        }
-
-        .guide-box {
-            background: rgba(255,255,255,0.03);
-            border-left: 3px solid #a855f7;
-            border-radius: 12px;
-            padding: 25px 30px;
-            margin-top: 40px;
-        }
-
-        .guide-box h4 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            color: #a855f7;
-        }
-
-        .guide-box ol {
-            padding-left: 20px;
-            color: rgba(255,255,255,0.6);
-            line-height: 2;
-        }
-
-        .guide-box code {
-            background: rgba(168, 85, 247, 0.15);
-            padding: 2px 8px;
-            border-radius: 5px;
-            color: #ec4899;
         }
 
         /* Contact Section */
@@ -981,6 +973,7 @@
             justify-content: center;
             font-size: 1.5rem;
             color: white;
+            cursor: pointer;
         }
 
         /* Fade In Animation for Scroll */
@@ -1090,33 +1083,17 @@
                 </div>
                 <div class="skills-container" style="margin-top: 40px;">
                     <h3>Core Skills</h3>
-                    <div class="skill-bar-item">
-                        <div class="skill-info">
-                            <span class="skill-name">C/C++</span>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-info">
-                            <span class="skill-name">Data Structures</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-info">
-                            <span class="skill-name">React & Node.js</span>
-                            <span class="skill-percent">88%</span>
-                        </div>
-                        <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-info">
-                            <span class="skill-name">Python & AI/ML</span>
-                            <span class="skill-percent">82%</span>
-                        </div>
-                        <div class="skill-track"><div class="skill-fill" data-width="82"></div></div>
+                    <div class="skill-pills-grid">
+                        <div class="skill-pill"><i class="fas fa-code"></i> C/C++</div>
+                        <div class="skill-pill"><i class="fas fa-sitemap"></i> Data Structures</div>
+                        <div class="skill-pill"><i class="fas fa-database"></i> DBMS</div>
+                        <div class="skill-pill"><i class="fas fa-network-wired"></i> Computer Networks</div>
+                        <div class="skill-pill"><i class="fab fa-react"></i> React.js</div>
+                        <div class="skill-pill"><i class="fab fa-node-js"></i> Node.js</div>
+                        <div class="skill-pill"><i class="fas fa-leaf"></i> MongoDB</div>
+                        <div class="skill-pill"><i class="fab fa-python"></i> Python</div>
+                        <div class="skill-pill"><i class="fas fa-brain"></i> TensorFlow</div>
+                        <div class="skill-pill"><i class="fab fa-git-alt"></i> Git/GitHub</div>
                     </div>
                 </div>
             </div>
@@ -1284,33 +1261,28 @@
         </div>
 
         <div class="cert-showcase">
-            <div class="upload-zone">
-                <div class="upload-zone-icon"><i class="fas fa-award"></i></div>
-                <h3 style="margin-bottom: 10px;">Certificate Gallery</h3>
-                <p style="color: rgba(255,255,255,0.5);">Professional certifications will be showcased here</p>
-            </div>
+            <p class="cert-intro">Click on any certificate to view in full size</p>
 
             <div class="cert-grid" id="certContainer">
-                <!-- Add your certificates here following this pattern -->
-                <div class="cert-card">
-                    <div class="cert-img-wrap">
-                        <img src="https://via.placeholder.com/400x250/1a1a2e/a855f7?text=Your+Certificate" alt="Certificate">
-                    </div>
-                    <div class="cert-body">
-                        <div class="cert-name">Certificate Name</div>
-                        <div class="cert-org">Issuing Organization</div>
+                
+                <!-- EMPTY STATE - Remove this div when you add your first certificate -->
+                <div class="cert-empty-state">
+                    <div class="cert-empty-icon"><i class="fas fa-award"></i></div>
+                    <h3>Certificates Coming Soon</h3>
+                    <p>My achievements will be showcased here</p>
+                </div>
+
+                <!-- 
+                ADD YOUR CERTIFICATES BY COPYING THIS BLOCK BELOW:
+                
+                <div class="cert-card" onclick="openLightbox(this)">
+                    <img src="cert1.jpg" alt="Certificate">
+                    <div class="cert-overlay">
+                        <div class="cert-view-icon"><i class="fas fa-expand"></i></div>
                     </div>
                 </div>
-            </div>
+                -->
 
-            <div class="guide-box">
-                <h4><i class="fas fa-info-circle"></i> How to Add Certificates</h4>
-                <ol>
-                    <li>Save certificate image as <code>cert1.jpg</code> in this folder</li>
-                    <li>Copy the certificate card block in the HTML</li>
-                    <li>Update image path and details</li>
-                    <li>Push changes using git commands</li>
-                </ol>
             </div>
         </div>
     </section>
@@ -1326,7 +1298,7 @@
                 <div class="contact-links">
                     <a href="mailto:it10800223185@gmail.com" class="contact-link-btn"><i class="fas fa-envelope"></i></a>
                     <a href="https://github.com/it10800223185-lab" target="_blank" class="contact-link-btn"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank" class="contact-link-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/subhodeep-sadhu-27b3ba420/" target="_blank" class="contact-link-btn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
@@ -1353,7 +1325,7 @@
             cursorDot.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .gallery-card, .cert-card').forEach(el => {
+        document.querySelectorAll('a, button, .gallery-card, .cert-card, .skill-pill').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
@@ -1365,7 +1337,6 @@
             const progress = (scrollTop / docHeight) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
 
-            // Navbar scroll effect
             const navbar = document.getElementById('navbar');
             if (scrollTop > 50) {
                 navbar.classList.add('scrolled');
@@ -1379,16 +1350,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    
-                    // Animate skill bars when about section is visible
-                    if (entry.target.id === 'about') {
-                        document.querySelectorAll('.skill-fill').forEach(bar => {
-                            const width = bar.getAttribute('data-width');
-                            setTimeout(() => {
-                                bar.style.width = width + '%';
-                            }, 300);
-                        });
-                    }
                 }
             });
         }, { threshold: 0.15 });
