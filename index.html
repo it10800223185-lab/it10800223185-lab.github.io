@@ -3,391 +3,975 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subhodeep Sadhu | Information Technology Student</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Subhodeep Sadhu | IT Student & Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none;
         }
 
-        :root {
-            --primary-color: #1a1a2e;
-            --accent-color: #e94560;
-            --gold: #d4af37;
-            --text-dark: #16213e;
-            --text-light: #f5f5f5;
-            --bg-light: #fafafa;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
+            font-family: 'Outfit', sans-serif;
+            background: #030014;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Classic Header */
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: var(--text-light);
-            padding: 80px 0;
-            text-align: center;
-            border-bottom: 5px solid var(--gold);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .profile-section {
-            margin-bottom: 30px;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #a855f7;
             border-radius: 50%;
-            border: 5px solid var(--gold);
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, background 0.3s;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: #a855f7;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
         }
 
-        .subtitle {
-            font-size: 1.3rem;
-            color: var(--gold);
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .cursor.hover {
+            transform: translate(-50%, -50%) scale(2.5);
+            background: rgba(168, 85, 247, 0.2);
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #a855f7, #ec4899, #f97316);
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* Particle Background */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            animation: bgMove 20s ease infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* Navigation */
         nav {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-bottom: 2px solid var(--gold);
-        }
-
-        nav ul {
-            list-style: none;
+            width: 100%;
+            padding: 25px 8%;
             display: flex;
-            justify-content: center;
-            gap: 40px;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
         }
 
-        nav a {
+        nav.scrolled {
+            background: rgba(3, 0, 20, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 15px 8%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            color: var(--text-dark);
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             transition: 0.3s;
             position: relative;
+            letter-spacing: 0.5px;
         }
 
-        nav a:hover {
-            color: var(--accent-color);
+        .nav-links a:hover {
+            color: #fff;
         }
 
-        nav a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: -8px;
+            left: 50%;
             width: 0;
             height: 2px;
-            background: var(--gold);
+            background: linear-gradient(90deg, #a855f7, #ec4899);
             transition: 0.3s;
+            transform: translateX(-50%);
         }
 
-        nav a:hover::after {
+        .nav-links a:hover::before {
             width: 100%;
         }
 
-        /* Sections */
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 8%;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1300px;
+            width: 100%;
+        }
+
+        .hero-text {
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .greeting {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            color: #a855f7;
+        }
+
+        .wave {
+            display: inline-block;
+            animation: wave 2s infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-15deg); }
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 3s linear infinite;
+        }
+
+        @keyframes gradientFlow {
+            to { background-position: 200% center; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 35px;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            color: white;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ec4899, #f97316);
+            transition: 0.4s;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.5);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Hero Image/Avatar */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-container {
+            width: 380px;
+            height: 380px;
+            position: relative;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            inset: -20px;
+            background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.5;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .avatar-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #030014;
+            animation: counterRotate 10s linear infinite;
+        }
+
+        @keyframes counterRotate {
+            to { transform: rotate(-360deg); }
+        }
+
+        .avatar-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .badge-1 { top: 10%; right: -5%; animation-delay: 0s; }
+        .badge-2 { bottom: 15%; left: -8%; animation-delay: 1s; }
+        .badge-3 { top: 50%; right: -15%; animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Section Styling */
         section {
-            padding: 80px 0;
+            padding: 140px 8%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #a855f7;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary-color);
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
         }
 
         /* About Section */
-        .about-content {
-            background: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--gold);
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        .skills-grid {
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 60px;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .skill-item {
-            background: var(--bg-light);
-            padding: 15px 20px;
-            border-radius: 5px;
-            border-left: 3px solid var(--accent-color);
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        /* Projects Gallery */
-        .project-showcase {
-            background: white;
+        .about-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
         }
 
-        .project-header {
-            text-align: center;
-            margin-bottom: 40px;
+        .about-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.15);
         }
 
-        .project-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+        .about-text-content p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
         }
 
-        .project-header p {
-            color: #666;
-            font-size: 1.1rem;
+        .about-text-content strong {
+            color: #a855f7;
         }
 
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .tech-badge {
-            background: var(--primary-color);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        /* Image Gallery Grid */
-        .gallery-grid {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 30px;
         }
 
-        .gallery-item {
+        .stat-box {
+            text-align: center;
+            padding: 25px 15px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .stat-box:hover {
+            background: rgba(168, 85, 247, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 5px;
+        }
+
+        /* Skills */
+        .skills-container h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+        }
+
+        .skill-bar-item {
+            margin-bottom: 22px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .skill-percent {
+            color: #a855f7;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .skill-track {
+            height: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a855f7, #ec4899);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .skill-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            background: rgba(255,255,255,0.4);
+            filter: blur(5px);
+        }
+
+        /* Projects Section */
+        .project-mega-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 30px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .project-mega-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        .project-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .project-title-row h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+        }
+
+        .status-badge {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .project-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .tech-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
             transition: 0.3s;
+        }
+
+        .tech-pill:hover {
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Gallery Grid with 3D Hover */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-card {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
             cursor: pointer;
-            aspect-ratio: 16/9;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .gallery-item img {
+        .gallery-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.3s;
+            transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-caption {
+        .gallery-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
-            padding: 20px 10px 10px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            inset: 0;
+            background: linear-gradient(to top, rgba(3,0,20,0.95) 0%, rgba(3,0,20,0.3) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: 0.4s;
         }
 
-        .project-links {
-            text-align: center;
-            margin-top: 30px;
+        .gallery-card:hover .gallery-overlay {
+            opacity: 1;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
+        .gallery-card:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            transform: translateY(10px);
+            transition: 0.4s;
+        }
+
+        .gallery-card:hover .gallery-title {
+            transform: translateY(0);
+        }
+
+        .zoom-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.8);
             transition: 0.3s;
-            margin: 0 10px;
         }
 
-        .btn:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .gallery-card:hover .zoom-icon {
+            opacity: 1;
+            transform: scale(1);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-        }
-
-        .btn-outline:hover {
-            background: var(--accent-color);
-            color: white;
+        .project-cta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         /* Certificates Section */
-        .certificates-container {
-            background: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        .cert-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .upload-zone {
+            border: 2px dashed rgba(168, 85, 247, 0.4);
+            border-radius: 24px;
+            padding: 70px 40px;
             text-align: center;
+            background: rgba(168, 85, 247, 0.03);
+            transition: 0.4s;
+            margin-bottom: 40px;
         }
 
-        .upload-area {
-            border: 3px dashed var(--gold);
-            border-radius: 10px;
-            padding: 60px 20px;
-            margin: 30px 0;
-            background: var(--bg-light);
+        .upload-zone:hover {
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.08);
         }
 
-        .upload-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
+        .upload-zone-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
         }
 
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .cert-card {
-            background: var(--bg-light);
-            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
+            transition: 0.4s;
         }
 
         .cert-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
         }
 
-        .cert-img {
+        .cert-img-wrap {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .cert-img-wrap img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
-            border-bottom: 3px solid var(--gold);
+            transition: 0.4s;
         }
 
-        .cert-content {
+        .cert-card:hover .cert-img-wrap img {
+            transform: scale(1.1);
+        }
+
+        .cert-body {
             padding: 20px;
         }
 
-        .cert-title {
+        .cert-name {
             font-weight: 600;
-            font-size: 1.1rem;
             margin-bottom: 5px;
-            color: var(--primary-color);
         }
 
-        .cert-issuer {
-            color: #666;
+        .cert-org {
+            color: rgba(255,255,255,0.5);
             font-size: 0.9rem;
         }
 
-        /* Contact */
-        .contact-section {
-            background: var(--primary-color);
-            color: white;
+        .guide-box {
+            background: rgba(255,255,255,0.03);
+            border-left: 3px solid #a855f7;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-top: 40px;
+        }
+
+        .guide-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #a855f7;
+        }
+
+        .guide-box ol {
+            padding-left: 20px;
+            color: rgba(255,255,255,0.6);
+            line-height: 2;
+        }
+
+        .guide-box code {
+            background: rgba(168, 85, 247, 0.15);
+            padding: 2px 8px;
+            border-radius: 5px;
+            color: #ec4899;
+        }
+
+        /* Contact Section */
+        .contact-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .contact-section .section-title {
-            color: white;
+        .contact-glow-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 30px;
+            padding: 70px 50px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .contact-section .section-title::after {
-            background: var(--gold);
+        .contact-glow-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1), transparent 60%);
+            animation: rotate 15s linear infinite;
+        }
+
+        .contact-glow-card > * {
+            position: relative;
+            z-index: 1;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 20px;
+            margin-top: 40px;
         }
 
-        .contact-links a {
+        .contact-link-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: white;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .contact-link-btn:hover {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            transform: translateY(-8px) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 0, 20, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
             width: 50px;
             height: 50px;
             background: rgba(255,255,255,0.1);
@@ -395,48 +979,48 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
             color: white;
-            font-size: 1.3rem;
-            transition: 0.3s;
-            border: 2px solid var(--gold);
         }
 
-        .contact-links a:hover {
-            background: var(--gold);
-            color: var(--primary-color);
-            transform: translateY(-3px);
+        /* Fade In Animation for Scroll */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        footer {
-            background: #0f0f1e;
-            color: #666;
-            text-align: center;
-            padding: 20px;
-            border-top: 3px solid var(--gold);
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            nav ul { gap: 20px; flex-wrap: wrap; }
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-text { order: 2; }
+            .hero-visual { order: 1; }
+            .hero-buttons { justify-content: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            * { cursor: auto !important; }
+            .cursor, .cursor-dot { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="profile-section">
-                <!-- ADD YOUR PHOTO HERE -->
-                <img src="profile.jpg" alt="Subhodeep Sadhu" class="profile-img" onerror="this.src='https://via.placeholder.com/180'">
-            </div>
-            <h1>Subhodeep Sadhu</h1>
-            <p class="subtitle">Information Technology Student</p>
-        </div>
-    </header>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="gradient-bg"></div>
+    <div class="noise"></div>
 
-    <nav>
-        <ul>
+    <nav id="navbar">
+        <div class="logo">SUBHODEEP</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#project">Project</a></li>
             <li><a href="#certificates">Certificates</a></li>
@@ -444,236 +1028,402 @@
         </ul>
     </nav>
 
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p class="about-text">
-                    A dedicated Information Technology student with strong foundations in C/C++, Data Structures, DBMS, and Computer Networks. Seeking an opportunity to contribute meaningfully to a professional environment while continuously growing as an engineer.
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-text">
+                <div class="greeting">
+                    <span class="wave">👋</span> Welcome to my portfolio
+                </div>
+                <h1>Hi, I'm <span class="gradient-text">Subhodeep</span><br>IT Student & Developer</h1>
+                <p class="hero-subtitle">
+                    Building AI-powered web applications and exploring the world of software engineering with passion for real-world impact.
                 </p>
-                <p class="about-text">
-                    Currently focused on building <strong>FarmMate</strong> – an AI-powered agricultural assistant helping Indian farmers with disease detection, soil analysis, weather forecasting, and real-time market prices using cutting-edge technologies.
-                </p>
-                
-                <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--primary-color);">Technical Skills</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">C/C++ Programming</div>
-                    <div class="skill-item">Data Structures</div>
-                    <div class="skill-item">DBMS (Database Management)</div>
-                    <div class="skill-item">Computer Networks</div>
-                    <div class="skill-item">React.js</div>
-                    <div class="skill-item">Node.js</div>
-                    <div class="skill-item">MongoDB</div>
-                    <div class="skill-item">Python</div>
-                    <div class="skill-item">AI/ML (TensorFlow)</div>
-                    <div class="skill-item">Git/GitHub</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="project" style="background: var(--bg-light);">
-        <div class="container">
-            <h2 class="section-title">Featured Project</h2>
-            
-            <div class="project-showcase">
-                <div class="project-header">
-                    <h3>🌾 FarmMate - AI Agricultural Assistant</h3>
-                    <p>Full-stack AI web application for Indian farmers</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">React.js</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">MongoDB</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">TensorFlow</span>
-                        <span class="tech-badge">CNN</span>
-                        <span class="tech-badge">Groq AI</span>
-                    </div>
-                </div>
-
-                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">Application Screenshots</h3>
-                
-                <div class="gallery-grid">
-                    <!-- Row 1: Auth -->
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/1Login_page.png" alt="Login">
-                        <div class="gallery-caption">Login Page</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/2ForgetPass_page.png" alt="Forgot Password">
-                        <div class="gallery-caption">Forgot Password</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/3OTP_page.png" alt="OTP">
-                        <div class="gallery-caption">OTP Verification</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/4CreateAcc_Page.png" alt="Register">
-                        <div class="gallery-caption">Create Account</div>
-                    </div>
-
-                    <!-- Row 2: Dashboard & AI -->
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/5Dashboard.png" alt="Dashboard">
-                        <div class="gallery-caption">Main Dashboard</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/5.1Dashboard.png" alt="Dashboard Activity">
-                        <div class="gallery-caption">Dashboard Activity</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/6AIassistant.png" alt="AI Assistant">
-                        <div class="gallery-caption">AI Assistant</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/7DiseaseScan.png" alt="Disease Scan">
-                        <div class="gallery-caption">Disease Detection</div>
-                    </div>
-
-                    <!-- Row 3: Disease & Soil -->
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/7.1Dscan.png" alt="Scan Result">
-                        <div class="gallery-caption">Scan Results</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/8SoilAnaysis.png" alt="Soil Analysis">
-                        <div class="gallery-caption">Soil Analysis Input</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/8.1SoilAnalysis.png" alt="Soil Results">
-                        <div class="gallery-caption">Crop Recommendations</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/9Weather.png" alt="Weather">
-                        <div class="gallery-caption">Weather Forecast</div>
-                    </div>
-
-                    <!-- Row 4: Weather, Mandi, Language -->
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/9.1weather.png" alt="5-Day Weather">
-                        <div class="gallery-caption">5-Day Forecast</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/10MandiPrice.png" alt="Mandi Prices">
-                        <div class="gallery-caption">Mandi Prices</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/10.1MandiPrice.png" alt="All Prices">
-                        <div class="gallery-caption">All Crop Prices</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/11Language.png" alt="Languages">
-                        <div class="gallery-caption">Multi-Language</div>
-                    </div>
-
-                    <!-- Row 5: Voice, History, Profile -->
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/12VoiceAssistant.png" alt="Voice">
-                        <div class="gallery-caption">Voice Assistant</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/13ScanHistory.png" alt="History">
-                        <div class="gallery-caption">Scan History</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/14EXCELsheetHistory.png" alt="Excel Export">
-                        <div class="gallery-caption">Excel Export</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/15EditProfile.png" alt="Profile">
-                        <div class="gallery-caption">Profile Management</div>
-                    </div>
-                </div>
-
-                <div class="project-links">
-                    <a href="https://github.com/it10800223185-lab/farmmate" class="btn" target="_blank">
-                        <i class="fab fa-github"></i> View Code on GitHub
+                <div class="hero-buttons">
+                    <a href="#project" class="btn btn-primary">
+                        <span><i class="fas fa-rocket"></i> View My Work</span>
                     </a>
-                    <a href="https://github.com/it10800223185-lab/farmmate#readme" class="btn btn-outline" target="_blank">
-                        <i class="fas fa-book"></i> Read Documentation
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i> Contact Me
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="certificates">
-        <div class="container">
-            <h2 class="section-title">Certificates & Achievements</h2>
-            
-            <div class="certificates-container">
-                <p style="font-size: 1.1rem; color: #666; margin-bottom: 20px;">
-                    Professional certifications and achievements in software development and information technology.
-                </p>
-
-                <!-- Certificate Upload Area (Visual Only - You add files via Git) -->
-                <div class="upload-area">
-                    <div class="upload-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <h3>Certificate Gallery</h3>
-                    <p>Click on any certificate below to view full size.<br>
-                    To add new certificates, follow the guide below.</p>
-                </div>
-
-                <!-- Certificate Grid - Add your certificates here -->
-                <div class="cert-grid" id="certContainer">
-                    
-                    <!-- EXAMPLE CERTIFICATE (Remove this when you add yours) -->
-                    <div class="cert-card">
-                        <img src="https://via.placeholder.com/400x200/1a1a2e/d4af37?text=Your+Certificate+Here" alt="Certificate" class="cert-img">
-                        <div class="cert-content">
-                            <div class="cert-title">Certificate Title</div>
-                            <div class="cert-issuer">Issuing Organization</div>
+            <div class="hero-visual">
+                <div class="avatar-container">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-frame">
+                        <div class="avatar-inner">
+                            <img src="profile.jpg" alt="Subhodeep" onerror="this.src='https://via.placeholder.com/380/1a1a2e/a855f7?text=Add+Photo'">
                         </div>
                     </div>
-
-                    <!-- Add more certificates below following the same pattern -->
-
+                    <div class="floating-badge badge-1"><i class="fas fa-code"></i> Developer</div>
+                    <div class="floating-badge badge-2"><i class="fas fa-brain"></i> AI Enthusiast</div>
+                    <div class="floating-badge badge-3"><i class="fas fa-graduation-cap"></i> IT Student</div>
                 </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-                <div style="margin-top: 40px; padding: 20px; background: #f0f0f0; border-radius: 8px; text-align: left;">
-                    <h4 style="color: var(--primary-color); margin-bottom: 10px;">
-                        <i class="fas fa-info-circle"></i> How to Add Your Certificates:
-                    </h4>
-                    <ol style="padding-left: 20px; color: #555;">
-                        <li>Save your certificate image as <code>cert1.jpg</code>, <code>cert2.jpg</code>, etc.</li>
-                        <li>Copy the certificate files to this folder</li>
-                        <li>Replace the placeholder code above with your certificate details</li>
-                        <li>Push to GitHub (instructions below)</li>
-                    </ol>
+    <section id="about" class="fade-section">
+        <div class="section-header">
+            <span class="section-tag">Get to know me</span>
+            <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">1+</div>
+                        <div class="stat-label">Major Project</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Dedication</div>
+                    </div>
+                </div>
+                <div class="skills-container" style="margin-top: 40px;">
+                    <h3>Core Skills</h3>
+                    <div class="skill-bar-item">
+                        <div class="skill-info">
+                            <span class="skill-name">C/C++</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Data Structures</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-info">
+                            <span class="skill-name">React & Node.js</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Python & AI/ML</span>
+                            <span class="skill-percent">82%</span>
+                        </div>
+                        <div class="skill-track"><div class="skill-fill" data-width="82"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text-content">
+                <div class="about-card">
+                    <p>
+                        A dedicated <strong>Information Technology student</strong> with strong foundations in C/C++, Data Structures, DBMS, and Computer Networks. Seeking an opportunity to contribute meaningfully to a professional environment while continuously growing as an engineer.
+                    </p>
+                    <p>
+                        Also actively exploring <strong>AI-powered web applications</strong>, blending traditional computer science fundamentals with modern technologies like Machine Learning and Full Stack Development to create impactful, real-world solutions.
+                    </p>
+                    <p>
+                        Currently focused on building <strong>FarmMate</strong> — an AI agricultural assistant designed to empower Indian farmers with intelligent disease detection, soil analysis, real-time weather updates, and market price insights.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">
-                Interested in discussing opportunities or collaborations? 
-                Feel free to reach out.
+    <section id="project" class="fade-section">
+        <div class="section-header">
+            <span class="section-tag">Featured Work</span>
+            <h2 class="section-title">My Project</h2>
+        </div>
+
+        <div class="project-mega-card">
+            <div class="project-title-row">
+                <h3>🌾 FarmMate</h3>
+                <div class="status-badge">
+                    <span class="status-dot"></span> Live Project
+                </div>
+            </div>
+            <p class="project-desc">
+                AI-Powered Agricultural Assistant helping Indian farmers with disease detection, soil analysis, weather forecasting, and real-time market prices — all in one platform.
             </p>
-            
-            <div class="contact-links">
-                <a href="mailto:it10800223185@gmail.com" title="Email">
-                    <i class="fas fa-envelope"></i>
+            <div class="tech-pills">
+                <span class="tech-pill">React.js</span>
+                <span class="tech-pill">Node.js</span>
+                <span class="tech-pill">MongoDB</span>
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">TensorFlow</span>
+                <span class="tech-pill">CNN</span>
+                <span class="tech-pill">Groq AI</span>
+                <span class="tech-pill">JWT Auth</span>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/1Login_page.png" alt="Login">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Login Page</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/2ForgetPass_page.png" alt="Forgot Password">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Forgot Password</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/3OTP_page.png" alt="OTP">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">OTP Verification</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/4CreateAcc_Page.png" alt="Register">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Create Account</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/5Dashboard.png" alt="Dashboard">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Main Dashboard</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/5.1Dashboard.png" alt="Dashboard Activity">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Dashboard Activity</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/6AIassistant.png" alt="AI Assistant">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">AI Assistant</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/7DiseaseScan.png" alt="Disease Scan">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Disease Detection</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/7.1Dscan.png" alt="Scan Result">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Scan Results</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/8SoilAnaysis.png" alt="Soil Analysis">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Soil Analysis</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/8.1SoilAnalysis.png" alt="Soil Results">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Crop Recommendations</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/9Weather.png" alt="Weather">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Weather Forecast</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/9.1weather.png" alt="5-Day Weather">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">5-Day Forecast</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/10MandiPrice.png" alt="Mandi Prices">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Mandi Prices</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/10.1MandiPrice.png" alt="All Prices">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">All Crop Prices</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/11Language.png" alt="Languages">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Multi-Language</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/12VoiceAssistant.png" alt="Voice">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Voice Assistant</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/13ScanHistory.png" alt="History">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Scan History</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/14EXCELsheetHistory.png" alt="Excel">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Excel Export</div></div>
+                </div>
+                <div class="gallery-card" onclick="openLightbox(this)">
+                    <img src="https://raw.githubusercontent.com/it10800223185-lab/farmmate/main/screenshots/15EditProfile.png" alt="Profile">
+                    <div class="zoom-icon"><i class="fas fa-expand"></i></div>
+                    <div class="gallery-overlay"><div class="gallery-title">Profile Management</div></div>
+                </div>
+            </div>
+
+            <div class="project-cta">
+                <a href="https://github.com/it10800223185-lab/farmmate" class="btn btn-primary" target="_blank">
+                    <span><i class="fab fa-github"></i> View Code</span>
                 </a>
-                <a href="https://github.com/it10800223185-lab" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
+                <a href="https://github.com/it10800223185-lab/farmmate#readme" class="btn btn-outline" target="_blank">
+                    <i class="fas fa-book"></i> Documentation
                 </a>
-                <a href="#" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="fade-section">
+        <div class="section-header">
+            <span class="section-tag">Achievements</span>
+            <h2 class="section-title">Certificates</h2>
+        </div>
+
+        <div class="cert-showcase">
+            <div class="upload-zone">
+                <div class="upload-zone-icon"><i class="fas fa-award"></i></div>
+                <h3 style="margin-bottom: 10px;">Certificate Gallery</h3>
+                <p style="color: rgba(255,255,255,0.5);">Professional certifications will be showcased here</p>
+            </div>
+
+            <div class="cert-grid" id="certContainer">
+                <!-- Add your certificates here following this pattern -->
+                <div class="cert-card">
+                    <div class="cert-img-wrap">
+                        <img src="https://via.placeholder.com/400x250/1a1a2e/a855f7?text=Your+Certificate" alt="Certificate">
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-name">Certificate Name</div>
+                        <div class="cert-org">Issuing Organization</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-box">
+                <h4><i class="fas fa-info-circle"></i> How to Add Certificates</h4>
+                <ol>
+                    <li>Save certificate image as <code>cert1.jpg</code> in this folder</li>
+                    <li>Copy the certificate card block in the HTML</li>
+                    <li>Update image path and details</li>
+                    <li>Push changes using git commands</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-section">
+        <div class="contact-wrapper">
+            <div class="contact-glow-card">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title" style="margin-top: 20px;">Let's Connect</h2>
+                <p style="color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 1.1rem;">
+                    Open to opportunities, collaborations, and interesting conversations.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:it10800223185@gmail.com" class="contact-link-btn"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/it10800223185-lab" target="_blank" class="contact-link-btn"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" class="contact-link-btn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Subhodeep Sadhu. All rights reserved. | Crafted with precision</p>
-        </div>
+        <p>© 2026 Subhodeep Sadhu — Crafted with passion & precision</p>
     </footer>
+
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></div>
+        <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursorDot');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button, .gallery-card, .cert-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in sections on scroll
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate skill bars when about section is visible
+                    if (entry.target.id === 'about') {
+                        document.querySelectorAll('.skill-fill').forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width + '%';
+                            }, 300);
+                        });
+                    }
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-section').forEach(section => {
+            fadeObserver.observe(section);
+        });
+
+        // Lightbox functionality
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
